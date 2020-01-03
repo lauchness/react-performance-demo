@@ -11,7 +11,6 @@ const Main = props => {
         <p>Hello {user}</p>
         <Canvas style={{ width: '5rem' }}>
           <RotatingCube />
-          <RotatingCube layer={1} />
         </Canvas>
       </div>
     </>
