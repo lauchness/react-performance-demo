@@ -1,18 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Loading from './components/Loading/Loading';
 import Login from './components/Login/Login';
 
-const loadMain = () => import('./components/Main/Main')
-const Main = React.lazy(loadMain);
+const Main = React.lazy(() => import(/* webpackPrefetch: true */ './components/Main/Main'))
 
 function App() {
   const [user, setUser] = useState(null);
-
-  // eager load Main component
-  useEffect(() => {
-    loadMain()
-  }, [])
 
   return (
     <div className="app">
