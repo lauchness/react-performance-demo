@@ -2,6 +2,8 @@
   animation: obnoxious-spin 4s linear infinite;
   font-size: 7.5rem;
   font-weight: 900;
+  position: absolute;
+  top: 50%;
 }
 
 @keyframes obnoxious-spin {
