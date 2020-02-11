@@ -9,7 +9,8 @@
   color: white;
 }
 
-.form-group > input {
+.form-group > input,
+.form-group > select {
   border: none;
   border-radius: 2px;
   font-size: calc(10px + 2vmin);

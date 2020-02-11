@@ -1,0 +1,17 @@
+.big-stupid-letters {
+  animation: obnoxious-spin 4s linear infinite;
+  font-size: 7.5rem;
+  font-weight: 900;
+}
+
+@keyframes obnoxious-spin {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.5) rotate(180deg);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
+}
