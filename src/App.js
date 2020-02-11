@@ -23,20 +23,22 @@ function App() {
       {!user ? (
         <Login setUser={setUser} />
       ) : (
-        <React.Suspense fallback={<Loading />}>
-          <Router>
-            <NavBar favouriteColor={favouriteColor} />
+        <Router>
+          <NavBar favouriteColor={favouriteColor} />
+          <React.Suspense fallback={<Loading />}>
             <Main user={user} />
-            <Switch>
-              <Route path="/profile">
+          </React.Suspense>
+          <Switch>
+            <Route path="/profile">
+              <React.Suspense fallback={<Loading />}>
                 <ProfileEditor
                   favouriteColor={favouriteColor}
                   setFavouriteColor={setFavouriteColor}
                 />
-              </Route>
-            </Switch>
-          </Router>
-        </React.Suspense>
+              </React.Suspense>
+            </Route>
+          </Switch>
+        </Router>
       )}
     </div>
   )
