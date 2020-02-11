@@ -1,15 +1,19 @@
-import React from 'react'
+import React, {useMemo} from 'react'
 import {colors} from '../../globalStyles'
 import './styles.css'
 
 const ProfileEditor = props => {
   const {favouriteColor, setFavouriteColor} = props
 
-  const mapColors = Object.keys(colors).map(color => (
-    <option key={color} value={color.toLowerCase()}>
-      {colors[color]}
-    </option>
-  ))
+  const mapColors = useMemo(
+    () =>
+      Object.keys(colors).map(color => (
+        <option key={color} value={color.toLowerCase()}>
+          {colors[color]}
+        </option>
+      )),
+    [],
+  )
 
   const handleSelect = event => {
     if (!(event && event.target)) {
