@@ -1,10 +1,10 @@
 import React from 'react'
-import {useAppContext} from '../AppContext'
+import {useAppState} from '../AppContext'
 import Color from './Color'
 import './ColorGrid.css'
 
 const ColorGrid = () => {
-  const [{colors}] = useAppContext()
+  const {colors} = useAppState()
 
   return (
     <div className="color-grid__container">

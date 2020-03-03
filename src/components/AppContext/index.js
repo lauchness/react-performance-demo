@@ -11,7 +11,8 @@ const initialState = {
   colors: mappedColors,
 }
 
-const AppContext = React.createContext()
+const AppStateContext = React.createContext()
+const AppDispatchContext = React.createContext()
 
 /**
  * Actions
@@ -50,16 +51,29 @@ function appReducer(state, action) {
  */
 function AppContextProvider({children}) {
   const [state, dispatch] = React.useReducer(appReducer, initialState)
-  const value = [state, dispatch]
-  return <AppContext.Provider value={value}>{children}</AppContext.Provider>
+  return (
+    <AppStateContext.Provider value={state}>
+      <AppDispatchContext.Provider value={dispatch}>
+        {children}
+      </AppDispatchContext.Provider>
+    </AppStateContext.Provider>
+  )
 }
 
-function useAppContext() {
-  const context = React.useContext(AppContext)
+function useAppState() {
+  const context = React.useContext(AppStateContext)
   if (!context) {
-    throw new Error('useAppContext must be used within the AppContextProvider')
+    throw new Error('useAppState must be used within the AppContextProvider')
   }
   return context
 }
 
-export {AppContextProvider, useAppContext, selectColor}
+function useAppDispatch() {
+  const context = React.useContext(AppDispatchContext)
+  if (!context) {
+    throw new Error('useAppDispatch must be used within the AppStateProvider')
+  }
+  return context
+}
+
+export {AppContextProvider, useAppState, useAppDispatch, selectColor}

@@ -1,8 +1,8 @@
 import React from 'react'
-import {useAppContext, selectColor} from '../AppContext'
+import {useAppDispatch, selectColor} from '../AppContext'
 
 const Color = ({color}) => {
-  const [, dispatch] = useAppContext()
+  const dispatch = useAppDispatch()
 
   console.log('color rendered')
 
