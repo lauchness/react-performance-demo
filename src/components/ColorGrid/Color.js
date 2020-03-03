@@ -1,18 +1,21 @@
 import React from 'react'
 import {useAppContext, selectColor} from '../AppContext'
+import {animated, useSpring} from 'react-spring'
 
 const Color = ({color}) => {
   const [, dispatch] = useAppContext()
 
-  console.log('color rendered')
+  const ratio = Math.random()
+
+  const springProps = useSpring({opacity: ratio})
 
   return (
     <div className="color-grid__color-object">
-      <button
+      <animated.button
         onClick={() => dispatch(selectColor(color))}
         type="button"
         className="color-grid__color-object-color"
-        style={{backgroundColor: color}}
+        style={{backgroundColor: color, ...springProps}}
       />
       <div className="color-grid__color-object-title">{color}</div>
     </div>
