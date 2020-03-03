@@ -7,7 +7,7 @@ const Main = props => {
 
   return (
     <>
-      <div style={{display: 'flex', alignItems: 'center'}}>
+      <div style={{display: 'flex', alignItems: 'center', margin: '4rem 0'}}>
         <p>Hello {user}</p>
         <Canvas style={{width: '5rem'}}>
           <RotatingCube />

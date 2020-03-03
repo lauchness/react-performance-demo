@@ -4,6 +4,7 @@ import './App.css'
 import Loading from './components/Loading/Loading'
 import Login from './components/Login/Login'
 import NavBar from './components/NavBar/NavBar'
+import {AppContextProvider} from './components/AppContext'
 
 const Main = React.lazy(() =>
   import(/* webpackPrefetch: true */ './components/Main/Main'),
@@ -16,31 +17,29 @@ const ProfileEditor = React.lazy(() =>
 
 function App() {
   const [user, setUser] = useState(null)
-  const [favouriteColor, setFavouriteColor] = useState('')
 
   return (
-    <div className="app">
-      {!user ? (
-        <Login setUser={setUser} />
-      ) : (
-        <Router>
-          <NavBar favouriteColor={favouriteColor} />
-          <React.Suspense fallback={<Loading />}>
-            <Main user={user} />
-          </React.Suspense>
-          <Switch>
-            <Route path="/profile">
-              <React.Suspense fallback={<Loading />}>
-                <ProfileEditor
-                  favouriteColor={favouriteColor}
-                  setFavouriteColor={setFavouriteColor}
-                />
-              </React.Suspense>
-            </Route>
-          </Switch>
-        </Router>
-      )}
-    </div>
+    <AppContextProvider>
+      <div className="app">
+        {!user ? (
+          <Login setUser={setUser} />
+        ) : (
+          <Router>
+            <NavBar />
+            <React.Suspense fallback={<Loading />}>
+              <Main user={user} />
+            </React.Suspense>
+            <Switch>
+              <Route path="/profile">
+                <React.Suspense fallback={<Loading />}>
+                  <ProfileEditor />
+                </React.Suspense>
+              </Route>
+            </Switch>
+          </Router>
+        )}
+      </div>
+    </AppContextProvider>
   )
 }
 

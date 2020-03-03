@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {useAppContext} from '../AppContext'
 import HeartIcon from './HeartIcon'
 import './styles.css'
 
@@ -15,11 +16,11 @@ const links = [
 ]
 
 const NavBar = props => {
-  const {favouriteColor} = props
+  const [{selectedColor}] = useAppContext()
 
   return (
     <nav className="nav-container">
-      <HeartIcon fillColor={favouriteColor} />
+      <HeartIcon fillColor={selectedColor} />
       {links.map(link => (
         <Link key={link.path} to={link.path}>
           {link.title}

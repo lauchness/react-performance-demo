@@ -1,0 +1,23 @@
+.color-grid__container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.color-grid__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 1rem;
+}
+
+.color-grid__color-object-color {
+  height: 0;
+  width: 75%;
+  padding-bottom: 75%;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+}
+
+.color-grid__color-object-title {
+  font-size: calc(10px + 2vmin);
+}
